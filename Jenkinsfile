@@ -10,19 +10,29 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt'
+                // Create virtual environment and install dependencies
+                sh '''#!/bin/bash
+                python3 -m venv venv
+                source venv/bin/activate
+                pip install -r requirements.txt
+                '''
             }
         }
 
         stage('Test') {
             steps {
-                sh 'source venv/bin/activate && pytest tests/'
+                // Run tests after activating virtual environment
+                sh '''#!/bin/bash
+                source venv/bin/activate
+                pytest tests/
+                '''
             }
         }
 
         stage('Deploy') {
             steps {
-                sh '''
+                // Docker build, stop, remove, and run the container
+                sh '''#!/bin/bash
                 docker build -t inventory-app .
                 docker stop inventory-app || true
                 docker rm inventory-app || true
