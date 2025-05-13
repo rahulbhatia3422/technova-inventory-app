@@ -1,0 +1,29 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova Inventory</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>TechNova Inventory Management</h1>
+    </header>
+    
+    <main>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="TechNova Logo">
+        </div>
+        <div class="welcome-message">
+            <h2>Welcome to Our Inventory System</h2>
+            <p>Streamline your product management with our solution.</p>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 TechNova. All rights reserved.</p>
+    </footer>
+</body>
+</html>
